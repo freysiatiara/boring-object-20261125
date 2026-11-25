@@ -40,7 +40,7 @@ def main():
         raise SystemExit("entry must not be only whitespace")
     if "\n" in line or "\r" in line:
         raise SystemExit("entry must be a single line")
-    if any(ord(ch) < 0x20 for ch in line):
+    if any(ord(ch) < 0x20 or ord(ch) == 0x7F for ch in line):
         raise SystemExit("entry must not contain control characters")
 
     path = output_path()
